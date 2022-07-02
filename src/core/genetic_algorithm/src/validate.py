@@ -1,15 +1,15 @@
-from src.core.src.models import *
-from src.core.src.common import *
 from typing import List
+
+from src.core.genetic_algorithm.src.common import generate_uuid, minutes_between_two_date
+from src.core.genetic_algorithm.src.exception.exception import GeneticException, GeneticMessageException
+from src.core.genetic_algorithm.src.models.job import Job
+from src.core.genetic_algorithm.src.models.schedule import Schedule
+from src.core.genetic_algorithm.src.models.time_slot import BreakingTimeSlot, TimeSlot
 
 
 def validate_input_data(schedule: Schedule, jobs: List[Job], schedule_breaking_time_slots: List[BreakingTimeSlot]):
     if schedule.end_time < schedule.start_time:
-        print('Rang buoc 4')
-        return {
-            'status': False,
-            'message': 'Rang buoc 4'
-        }
+        raise GeneticException(GeneticMessageException.RANG_BUOC_4)
 
     fixed_time_job_time_slots = []
     fixed_time_jobs = [job for job in jobs if job.flextime == 0]
@@ -26,13 +26,8 @@ def validate_input_data(schedule: Schedule, jobs: List[Job], schedule_breaking_t
     for jt in fixed_time_job_time_slots:
         for bt in schedule_breaking_time_slots:
             if not time_slot_unique(jt, bt):
-                print(jt.__dict__)
-                print(bt.__dict__)
-                print('Rang buoc 8')
-                return {
-                    'status': False,
-                    'message': 'Rang buoc 8'
-                }
+                raise GeneticException(GeneticMessageException.RANG_BUOC_8)
+
     total_fixed_time = 0
     total_estimated_time = 0
     # for jt in fixed_time_job_time_slots:
@@ -46,11 +41,8 @@ def validate_input_data(schedule: Schedule, jobs: List[Job], schedule_breaking_t
 
     for job in jobs:
         if job.early_start_time < schedule.start_time or job.late_finish_time > schedule.end_time:
-            print('Rang buoc 6')
-            return {
-                'status': False,
-                'message': 'Rang buoc 6'
-            }
+            raise GeneticException(GeneticMessageException.RANG_BUOC_6)
+
         if job.early_start_time > job.late_finish_time:
             print('Thoi gian bat dau can < thoi gian ket thuc')
             return {
@@ -61,24 +53,14 @@ def validate_input_data(schedule: Schedule, jobs: List[Job], schedule_breaking_t
         # print(job.serialize())
         if minutes_between_two_date(later_date=job.late_finish_time,
                                     first_date=job.early_start_time) < job.estimated_time:
-            print('Rang buoc 5')
-            return {
-                'status': False,
-                'message': 'Rang buoc 5'
-            }
+            raise GeneticException(GeneticMessageException.RANG_BUOC_5)
+
         total_estimated_time += job.estimated_time
 
     if total_estimated_time > available_time:
-        print(total_estimated_time, available_time)
-        print('Rang buoc 7')
-        return {
-            'status': False,
-            'message': 'Rang buoc 7'
-        }
-    return {
-        'status': True,
-        'message': 'Success'
-    }
+        raise GeneticException(GeneticMessageException.RANG_BUOC_7)
+
+    return True
 
 
 def time_slot_unique(time_slot_1: TimeSlot, time_slot_2: TimeSlot):

@@ -1,9 +1,13 @@
+import json
 import os
 from flask import Flask
 from flask_restful import Api
 from flask_cors import CORS
 from src.config import config_dict, FLASK_ENV
+from src.core.genetic_algorithm.src.exception.exception import GeneticException
+from src.core.tabu_algorithm.src.exception.exception import TabuException
 from src.routes import initialize_routes
+
 
 def create_app(flask_env=FLASK_ENV):
     """_summary_
@@ -22,8 +26,24 @@ def create_app(flask_env=FLASK_ENV):
     app.app_context().push()
 
     api = Api(app)
+
     initialize_routes(api)
 
     return app
 
+
 app = create_app()
+
+
+@app.errorhandler(GeneticException)
+def handle_exception(e):
+    return {
+               'message': e.message,
+           }, 422
+
+
+@app.errorhandler(TabuException)
+def handle_exception(e):
+    return {
+               'message': e.message,
+           }, 422

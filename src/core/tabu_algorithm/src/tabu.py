@@ -4,15 +4,13 @@ import random
 from datetime import datetime, timedelta
 from typing import List
 
-from flask import jsonify
-
-from src.core.genetic_algorithm.src.common import generate_uuid, MIN_DISTANCE, weekday_count, text_to_vector, \
-    get_cosine, MIN_COSINE_SIMILARITY, string_to_datetime, minutes_between_two_date
-from src.core.genetic_algorithm.src.models.individual import Individual
-from src.core.genetic_algorithm.src.models.job import Job
-from src.core.genetic_algorithm.src.models.schedule import Schedule
-from src.core.genetic_algorithm.src.models.time_slot import WorkingTimeSlot, BreakingTimeSlot, TimeSlot
-from src.core.genetic_algorithm.src.validate import validate_input_data
+from src.core.tabu_algorithm.src.common import generate_uuid, MIN_DISTANCE, weekday_count, text_to_vector, get_cosine, \
+    MIN_COSINE_SIMILARITY, string_to_datetime, minutes_between_two_date
+from src.core.tabu_algorithm.src.models.individual import Individual
+from src.core.tabu_algorithm.src.models.job import Job
+from src.core.tabu_algorithm.src.models.schedule import Schedule
+from src.core.tabu_algorithm.src.models.time_slot import TimeSlot, BreakingTimeSlot, WorkingTimeSlot
+from src.core.tabu_algorithm.src.validate import validate_input_data
 
 LATENESS_MAX: float = math.inf
 
@@ -42,8 +40,8 @@ def add_fixed_time_working_time_slots(schedule: Schedule, jobs: List[Job]):
 
 
 def filter_list_time_slots(time_slots: List[TimeSlot], min_distance=MIN_DISTANCE):
-    for x in time_slots:
-        print(type(x), x)
+    # for x in time_slots:
+    # print(type(x), x)
     time_slots.sort(key=lambda x: x.start_time)
     filter_time_slots = [time_slots[0]]
     for i in range(1, len(time_slots)):
@@ -194,38 +192,34 @@ def set_individual_schedule(flextime_jobs: List[Job], timeline: List[TimeSlot]):
                 added_working_time_slot = WorkingTimeSlot(
                     id=generate_uuid(),
                     start_time=temp_timeline[temp_timeline_index].end_time,
-                    end_time=temp_timeline[temp_timeline_index].end_time +
-                             timedelta(minutes=(job_remaining_time)),
+                    end_time=temp_timeline[temp_timeline_index].end_time + timedelta(minutes=job_remaining_time),
                     job=job,
                     remaining_time=0
                 )
                 temp_timeline.append(added_working_time_slot)
                 added_working_time_slots.append(added_working_time_slot)
                 job_finish_time = temp_timeline[temp_timeline_index].end_time + timedelta(
-                    minutes=(job_remaining_time))
+                    minutes=job_remaining_time)
                 temp_timeline[temp_timeline_index].end_time = job_finish_time
                 job_remaining_time = 0
             elif job_remaining_time == x:
                 added_working_time_slot = WorkingTimeSlot(
                     id=generate_uuid(),
                     start_time=temp_timeline[temp_timeline_index].end_time,
-                    end_time=temp_timeline[temp_timeline_index].end_time +
-                             timedelta(minutes=(job_remaining_time)),
+                    end_time=temp_timeline[temp_timeline_index].end_time + timedelta(minutes=job_remaining_time),
                     job=job,
                     remaining_time=0
                 )
                 temp_timeline.append(added_working_time_slot)
                 added_working_time_slots.append(added_working_time_slot)
-                job_finish_time = temp_timeline[temp_timeline_index].end_time + timedelta(
-                    minutes=(job_remaining_time))
+                job_finish_time = temp_timeline[temp_timeline_index].end_time + timedelta(minutes=job_remaining_time)
                 job_remaining_time = 0
                 temp_timeline_index = temp_timeline_index + 1
             else:
                 added_working_time_slot = WorkingTimeSlot(
                     id=generate_uuid(),
                     start_time=temp_timeline[temp_timeline_index].end_time,
-                    end_time=temp_timeline[temp_timeline_index].end_time +
-                             timedelta(minutes=(x)),
+                    end_time=temp_timeline[temp_timeline_index].end_time + timedelta(minutes=x),
                     job=job,
                     remaining_time=job_remaining_time - x
                 )
@@ -236,94 +230,55 @@ def set_individual_schedule(flextime_jobs: List[Job], timeline: List[TimeSlot]):
     return temp_timeline, added_working_time_slots
 
 
-class Genetic:
+class Tabu:
+    best_solution: Individual
+    neighbors: List[Individual]
+    tabu_list: List
 
-    @staticmethod
-    def __on_generation__(schedule: Schedule,
+    def __init__(self):
+        self.neighbors = []
+        self.tabu_list = []
+
+    def __on_generation__(self,
+                          schedule: Schedule,
                           timeline: List[TimeSlot],
                           start_time_reused_jobs: List[Job],
                           jobs: List[Job]):
         flextime_jobs = [job for job in jobs if (job.flextime == 1 and job not in start_time_reused_jobs)]
-        population = []
-        num_individual = 10
-        for i in range(num_individual):
-            # print("______________________________")
-            # print("individual", i)
-
-            random.shuffle(flextime_jobs)
-            individual = Individual(flextime_jobs=flextime_jobs[:],
-                                    schedule=Schedule(start_time=schedule.start_time, end_time=schedule.end_time))
-            individual.schedule.time_slots = schedule.time_slots.copy()
-            # individual.schedule.time_slots = set_individual_schedule(flextime_jobs=individual.flextime_jobs,
-            # timeline=copy.deepcopy(timeline))
-            _, added_working_time_slots = set_individual_schedule(flextime_jobs=individual.flextime_jobs,
-                                                                  timeline=copy.deepcopy(timeline))
-            individual.schedule.time_slots += added_working_time_slots
-            population.append(individual)
-
-            # print(end-start, "individual", i)
-            # print("______________________________")
-        return population
+        random.shuffle(flextime_jobs)
+        self.best_solution = Individual(flextime_jobs=flextime_jobs[:],
+                                        schedule=Schedule(start_time=schedule.start_time,
+                                                          end_time=schedule.end_time))
+        self.best_solution.schedule.time_slots = schedule.time_slots.copy()
+        _, added_working_time_slots = set_individual_schedule(flextime_jobs=self.best_solution.flextime_jobs,
+                                                              timeline=copy.deepcopy(timeline))
+        self.best_solution.schedule.time_slots += added_working_time_slots
 
     @staticmethod
-    def __on_selection__(population: List[Individual]):
-        print('onselection')
-        population.sort(key=lambda x: x.lateness)
-        return population[:2]
+    def __check_item_in_tabu_list__(x, tabu_list):
+        for i in tabu_list:
+            if set(i) == set(x):
+                return False
+        return True
 
-    @staticmethod
-    def __on_crossover__(individual1: Individual, individual2: Individual):
-        print('oncrossover')
-        flextime_job_ids = [i.id for i in individual1.flextime_jobs]
-        parents_1 = [i.id for i in individual1.flextime_jobs]
-        # print(parents_1, "parents_1")
-        parents_2 = [i.id for i in individual2.flextime_jobs]
-        # print(parents_2, "parents_2")
+    def __update_best_solution__(self):
+        self.neighbors.sort(key=lambda x: x.lateness)
+        # if self.best_solution.lateness >= self.neighbors[0].lateness:
+        print(self.neighbors[0].lateness, self.neighbors[0].flextime_jobs)
+        return self.neighbors[0]
+        # return self.best_solution
 
-        temp_child_1_flextime_job_ids = []
-        temp_child_2_flextime_job_ids = []
-        child_1_flextime_job_ids = []
-        child_2_flextime_job_ids = []
+    def __generate_neighbors__(self):
+        neighbors_flextime_jobs = []  # List[List[Job]] Mảng các công việc không cố định của các giải pháp lân cận
+        for i in range(len(self.best_solution.flextime_jobs) - 1):
+            temp = copy.deepcopy(self.best_solution.flextime_jobs)
+            if self.__check_item_in_tabu_list__(x=[temp[i], temp[i + 1]],
+                                                tabu_list=self.tabu_list):
+                temp[i], temp[i + 1] = temp[i + 1], temp[i]
+                neighbors_flextime_jobs.append(temp)
+                self.tabu_list.append([temp[i], temp[i + 1]])
+        return neighbors_flextime_jobs
 
-        # min_cross = len(flextime_job_ids)//2
-        while (temp_child_1_flextime_job_ids == temp_child_2_flextime_job_ids):
-            temp_child_1_flextime_job_ids = []
-            temp_child_2_flextime_job_ids = []
-
-            # x = random.randint(min_cross, (len(flextime_job_ids) - 1))
-            x = len(flextime_job_ids) // 2
-            crossover_gens = random.sample(parents_1, x)
-            for id in parents_1:
-                if id in crossover_gens:
-                    temp_child_1_flextime_job_ids.append(id)
-            for id in parents_2:
-                if id in crossover_gens:
-                    temp_child_2_flextime_job_ids.append(id)
-        i = 0
-        for p in parents_1:
-            if p in temp_child_1_flextime_job_ids:
-                child_1_flextime_job_ids.append(temp_child_2_flextime_job_ids[i])
-                i += 1
-            else:
-                child_1_flextime_job_ids.append(p)
-        j = 0
-        for p in parents_2:
-            if p in temp_child_2_flextime_job_ids:
-                child_2_flextime_job_ids.append(temp_child_1_flextime_job_ids[j])
-                j += 1
-            else:
-                child_2_flextime_job_ids.append(p)
-
-        return child_1_flextime_job_ids, child_2_flextime_job_ids
-
-    @staticmethod
-    def __on_mutation__(individual: Individual):
-        print('onmutation')
-        new_flextime_jobs = individual.flextime_jobs
-        mutation_gens = random.sample(new_flextime_jobs, 2)
-        a, b = new_flextime_jobs.index(mutation_gens[0]), new_flextime_jobs.index(mutation_gens[1])
-        new_flextime_jobs[b], new_flextime_jobs[a] = new_flextime_jobs[a], new_flextime_jobs[b]
-        return new_flextime_jobs
 
     @staticmethod
     def __fitness_func__(individual: Individual):
@@ -350,96 +305,51 @@ class Genetic:
                             scheduled_working_time_slots: List[WorkingTimeSlot],
                             breaking_time_slots: List[BreakingTimeSlot]):
         temp_breaking_time_slots = copy.deepcopy(breaking_time_slots)
-        schedule = schedule_generate(start_time=schedule_start_time, end_time=schedule_end_time)
-        schedule = add_breaking_time_slots(schedule, breaking_time_slots)
-        schedule = add_fixed_time_working_time_slots(schedule, jobs)
+        schedule = schedule_generate(start_time=schedule_start_time,
+                                     end_time=schedule_end_time)
+        schedule = add_breaking_time_slots(schedule=schedule,
+                                           time_slots=breaking_time_slots)
+        schedule = add_fixed_time_working_time_slots(schedule=schedule,
+                                                     jobs=jobs)
         timeline, start_time_reused_jobs = add_reused_working_time_slots(
             schedule=schedule,
             reused_working_time_slots=scheduled_working_time_slots,
             jobs=jobs)
-        acceptable_individual = {}
-        generation = 0
-        population = []
+
         validated = validate_input_data(schedule=schedule,
                                         jobs=jobs,
                                         schedule_breaking_time_slots=temp_breaking_time_slots)
         if validated:
-            p = self.__on_generation__(schedule=schedule, timeline=timeline,
-                                       start_time_reused_jobs=start_time_reused_jobs,
-                                       jobs=jobs)
-            population.append(p)
+            acceptable_individual = {}
+            self.__on_generation__(schedule=schedule,
+                                   timeline=timeline,
+                                   start_time_reused_jobs=start_time_reused_jobs,
+                                   jobs=jobs)
             done = False
-            for individual in population[generation]:
-                individual.lateness = self.__fitness_func__(individual=individual)
-                print(individual.lateness, len(individual.schedule.time_slots), "lateness")
-
-                if individual.lateness == 0 and len(individual.schedule.time_slots) != 0:
-                    acceptable_individual = individual
-                    done = True
-
+            population = []
             while not done:
-                print(generation, "generation")
-                new_generation = self.__on_selection__(population=population[generation])
-                print(new_generation, "new_generation")
-                flextime_jobs_1 = []
-                flextime_jobs_2 = []
-                child_job_ids_on_crossover_1, child_job_ids_on_crossover_2 = self.__on_crossover__(new_generation[0],
-                                                                                                   new_generation[1])
-                for id in child_job_ids_on_crossover_1:
-                    flextime_jobs_1 += [job for job in new_generation[0].flextime_jobs if job.id == id]
-                for id in child_job_ids_on_crossover_2:
-                    flextime_jobs_2 += [job for job in new_generation[1].flextime_jobs if job.id == id]
+                self.best_solution.lateness = self.__fitness_func__(self.best_solution)
+                if self.best_solution.lateness == 0 and len(self.best_solution.schedule.time_slots) != 0:
+                    acceptable_individual = self.best_solution
+                    print(self.best_solution.lateness, self.best_solution.flextime_jobs)
+                    done = True
+                else:
+                    neighbors_flextime_jobs = self.__generate_neighbors__()
+                    for j in neighbors_flextime_jobs:
+                        new_individual = Individual(flextime_jobs=j,
+                                                    schedule=Schedule(start_time=schedule_start_time,
+                                                                      end_time=schedule_end_time))
+                        _, added_working_time_slots = set_individual_schedule(
+                            flextime_jobs=j,
+                            timeline=copy.deepcopy(timeline))
+                        new_individual.schedule.time_slots += added_working_time_slots
+                        new_individual.lateness = self.__fitness_func__(individual=new_individual)
+                        self.neighbors.append(new_individual)
+                    self.best_solution = self.__update_best_solution__()
+            if acceptable_individual:
+                acceptable_individual.schedule.time_slots.sort(key=lambda x: x.start_time)
+                res = {
+                    'result': acceptable_individual.schedule.serialize()['time_slots']
+                }
+            return res
 
-                child_on_crossover_1 = Individual(flextime_jobs=flextime_jobs_1,
-                                                  schedule=Schedule(start_time=new_generation[0].schedule.start_time,
-                                                                    end_time=new_generation[0].schedule.end_time))
-                child_on_crossover_2 = Individual(flextime_jobs=flextime_jobs_2,
-                                                  schedule=Schedule(start_time=new_generation[0].schedule.start_time,
-                                                                    end_time=new_generation[0].schedule.end_time))
-                _, added_working_time_slots_on_crossover_1 = set_individual_schedule(flextime_jobs=flextime_jobs_1,
-                                                                                     timeline=copy.deepcopy(timeline))
-                child_on_crossover_1.schedule.time_slots += added_working_time_slots_on_crossover_1
-
-                _, added_working_time_slots_on_crossover_2 = set_individual_schedule(flextime_jobs=flextime_jobs_2,
-                                                                                     timeline=copy.deepcopy(timeline))
-                child_on_crossover_1.schedule.time_slots += added_working_time_slots_on_crossover_2
-
-                new_generation.append(child_on_crossover_1)
-
-                new_generation.append(child_on_crossover_2)
-
-                flextime_jobs_mutation = self.__on_mutation__(new_generation[0])
-
-                child_on_mutation = Individual(flextime_jobs=flextime_jobs_mutation,
-                                               schedule=Schedule(start_time=new_generation[0].schedule.start_time,
-                                                                 end_time=new_generation[0].schedule.end_time))
-                # child_on_mutation.schedule.time_slots += set_individual_schedule(flextime_jobs=flextime_jobs_mutation, timeline=copy.deepcopy(timeline))
-                _, added_working_time_slots_on_mutation = set_individual_schedule(flextime_jobs=flextime_jobs_mutation,
-                                                                                  timeline=copy.deepcopy(timeline))
-                child_on_mutation.schedule.time_slots += added_working_time_slots_on_mutation
-                new_generation.append(child_on_mutation)
-                # population.append(new_generation)
-
-                for individual in new_generation:
-                    individual.lateness = self.__fitness_func__(individual=individual)
-                    print(individual.lateness, len(individual.schedule.time_slots), "lateness")
-                    if individual.lateness == 0 and len(individual.schedule.time_slots) != 0:
-                        acceptable_individual = individual
-                        done = True
-                population.append(new_generation)
-                generation += 1
-        # total_len = 0
-        # for p in population:
-        #     total_len += len(p)
-        # else:
-        #     res = jsonify({
-        #         'message': validated['message']
-        #     })
-        #     # res.status_code = 422
-
-        if (acceptable_individual):
-            acceptable_individual.schedule.time_slots.sort(key=lambda x: x.start_time)
-            res = {
-                'result': acceptable_individual.schedule.serialize()['time_slots']
-            }
-        return res
