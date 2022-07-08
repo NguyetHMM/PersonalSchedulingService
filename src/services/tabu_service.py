@@ -1,4 +1,5 @@
 import copy
+import json
 import time
 from typing import List
 
@@ -58,10 +59,20 @@ class TabuService:
             recent_working_time_slots.append(t)
 
         tabu = Tabu()
-        res = tabu.schedule_generation(schedule_start_time=start_time,
+        res, population_size, output_filename = tabu.schedule_generation(schedule_start_time=start_time,
                                        schedule_end_time=end_time,
                                        jobs=schedule_jobs,
                                        scheduled_working_time_slots=recent_working_time_slots,
                                        breaking_time_slots=temp)
+
         run_time_end = time.time()
+        log = {
+            'population_size': population_size,
+            'accept_individual': res,
+            'runtime': run_time_end - run_time_start,
+            'jobs_num': len(jobs)
+        }
+        output_filename = 'result' + output_filename
+        with open(f'{output_filename}', 'w') as file:
+            json.dump(log, file, indent=2, separators=(',', ':'), ensure_ascii=False)
         return res

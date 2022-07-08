@@ -371,16 +371,16 @@ class Genetic:
             done = False
             for individual in population[generation]:
                 individual.lateness = self.__fitness_func__(individual=individual)
-                print(individual.lateness, len(individual.schedule.time_slots), "lateness")
+                # print(individual.lateness, len(individual.schedule.time_slots), "lateness")
 
                 if individual.lateness == 0 and len(individual.schedule.time_slots) != 0:
                     acceptable_individual = individual
                     done = True
 
             while not done:
-                print(generation, "generation")
+                # print(generation, "generation")
                 new_generation = self.__on_selection__(population=population[generation])
-                print(new_generation, "new_generation")
+                # print(new_generation, "new_generation")
                 flextime_jobs_1 = []
                 flextime_jobs_2 = []
                 child_job_ids_on_crossover_1, child_job_ids_on_crossover_2 = self.__on_crossover__(new_generation[0],
@@ -422,7 +422,7 @@ class Genetic:
 
                 for individual in new_generation:
                     individual.lateness = self.__fitness_func__(individual=individual)
-                    print(individual.lateness, len(individual.schedule.time_slots), "lateness")
+                    # print(individual.lateness, len(individual.schedule.time_slots), "lateness")
                     if individual.lateness == 0 and len(individual.schedule.time_slots) != 0:
                         acceptable_individual = individual
                         done = True
@@ -437,9 +437,10 @@ class Genetic:
         #     })
         #     # res.status_code = 422
 
-        if (acceptable_individual):
+        if acceptable_individual:
             acceptable_individual.schedule.time_slots.sort(key=lambda x: x.start_time)
             res = {
                 'result': acceptable_individual.schedule.serialize()['time_slots']
             }
+
         return res

@@ -64,6 +64,8 @@ class SchedulingGenerateService:
                                           scheduled_working_time_slots=recent_working_time_slots,
                                           breaking_time_slots=temp)
         run_time_end = time.time()
+
+
         return res
 
 

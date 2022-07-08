@@ -1,4 +1,5 @@
 import copy
+import json
 import math
 import random
 from datetime import datetime, timedelta
@@ -319,12 +320,24 @@ class Tabu:
         validated = validate_input_data(schedule=schedule,
                                         jobs=jobs,
                                         schedule_breaking_time_slots=temp_breaking_time_slots)
+        population = []
         if validated:
             acceptable_individual = {}
-            self.__on_generation__(schedule=schedule,
-                                   timeline=timeline,
-                                   start_time_reused_jobs=start_time_reused_jobs,
-                                   jobs=jobs)
+            generate_success = False
+            while not generate_success:
+                self.__on_generation__(schedule=schedule,
+                                       timeline=timeline,
+                                       start_time_reused_jobs=start_time_reused_jobs,
+                                       jobs=jobs)
+                self.best_solution.lateness = self.__fitness_func__(self.best_solution)
+                if self.best_solution.lateness == LATENESS_MAX:
+                    population.append({
+                        'working_time_slots': [item.serialize() for item in self.best_solution.schedule.time_slots],
+                        'lateness': self.best_solution.lateness
+                    })
+                    generate_success = False
+                else:
+                    generate_success = True
             done = False
             population = []
             while not done:
@@ -332,6 +345,10 @@ class Tabu:
                 if self.best_solution.lateness == 0 and len(self.best_solution.schedule.time_slots) != 0:
                     acceptable_individual = self.best_solution
                     print(self.best_solution.lateness, self.best_solution.flextime_jobs)
+                    population.append({
+                        'working_time_slots': [item.serialize() for item in acceptable_individual.schedule.time_slots],
+                        'lateness': acceptable_individual.lateness
+                    })
                     done = True
                 else:
                     neighbors_flextime_jobs = self.__generate_neighbors__()
@@ -345,11 +362,19 @@ class Tabu:
                         new_individual.schedule.time_slots += added_working_time_slots
                         new_individual.lateness = self.__fitness_func__(individual=new_individual)
                         self.neighbors.append(new_individual)
+                        population.append({
+                            'working_time_slots': [item.serialize() for item in new_individual.schedule.time_slots],
+                            'lateness': new_individual.lateness
+                        })
                     self.best_solution = self.__update_best_solution__()
             if acceptable_individual:
+                output_filename = generate_uuid()+'.txt'
+                output_filename = 'population'+output_filename
+                with open(f'{output_filename}', 'w') as file:
+                    json.dump(population, file, indent=2, separators=(',', ':'), ensure_ascii=False)
                 acceptable_individual.schedule.time_slots.sort(key=lambda x: x.start_time)
                 res = {
                     'result': acceptable_individual.schedule.serialize()['time_slots']
                 }
-            return res
+            return res, len(population), output_filename
 

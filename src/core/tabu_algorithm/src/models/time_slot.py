@@ -1,6 +1,7 @@
 from datetime import datetime
 from src.core.tabu_algorithm.src.models.job import Job
 
+
 class TimeSlot:
     def __init__(self, id, start_time, end_time):
         self.id = id
