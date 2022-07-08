@@ -1,0 +1,184 @@
+{
+  "schedule_start_time":"2022-07-01 08:00:00",
+  "schedule_end_time":"2022-07-09 17:00:00",
+  "jobs":[
+    {
+      "id":"d1974af2-7c18-4330-9022-52c939dd3fe3",
+      "name":"Evaluate mô hình",
+      "early_start_time":"2022-07-01 08:00:00",
+      "late_finish_time":"2022-07-01 10:00:00",
+      "estimated_time":120,
+      "flextime":0
+    },
+    {
+      "id":"a99dc5f4-05e2-4658-9c71-108aab222262",
+      "name":"Ghi nhật ký thí nhiệm",
+      "early_start_time":"2022-07-03 08:00:00",
+      "late_finish_time":"2022-07-03 10:00:00",
+      "estimated_time":120,
+      "flextime":0
+    },
+    {
+      "id":"32216738-97f0-41b2-8de3-b41195a21eaa",
+      "name":"Điền thông tin lý lịch khoa học",
+      "early_start_time":"2022-07-06 08:00:00",
+      "late_finish_time":"2022-07-06 10:00:00",
+      "estimated_time":120,
+      "flextime":0
+    },
+    {
+      "id":"7b30e486-04e7-44a8-8268-3d3173048b97",
+      "name":"Viết bài báo cho hội nghị quốc tế",
+      "early_start_time":"2022-07-08 08:00:00",
+      "late_finish_time":"2022-07-08 10:00:00",
+      "estimated_time":120,
+      "flextime":0
+    },
+    {
+      "id":"048c01aa-06b9-4d63-98c3-d73276f3d4e0",
+      "name":"Thực hiện huấn luyện mô hình học sâu",
+      "early_start_time":"2022-07-02 08:00:00",
+      "late_finish_time":"2022-07-08 17:00:00",
+      "estimated_time":240,
+      "flextime":1
+    },
+    {
+      "id":"bab87ed9-4fe6-4c78-bb6e-390a608cba63",
+      "name":"Hoàn thiện LLKH",
+      "early_start_time":"2022-07-02 08:00:00",
+      "late_finish_time":"2022-07-07 17:00:00",
+      "estimated_time":240,
+      "flextime":1
+    },
+    {
+      "id":"628f6680-890e-4574-99d3-cf44280b1440",
+      "name":"Ghi nhật ký thí nhiệm",
+      "early_start_time":"2022-07-01 08:00:00",
+      "late_finish_time":"2022-07-09 17:00:00",
+      "estimated_time":120,
+      "flextime":1
+    },
+    {
+      "id":"289e82a4-e1e9-4be4-9d10-ec545736ad80",
+      "name":"Viết lý lịch khoa học",
+      "early_start_time":"2022-07-01 08:00:00",
+      "late_finish_time":"2022-07-09 17:00:00",
+      "estimated_time":180,
+      "flextime":1
+    },
+    {
+      "id":"36f9713c-4697-4324-afbb-664d8f1e3bb3",
+      "name":"Đánh giá mô hình học sâu",
+      "early_start_time":"2022-07-01 08:00:00",
+      "late_finish_time":"2022-07-09 17:00:00",
+      "estimated_time":150,
+      "flextime":1
+    },
+    {
+      "id":"bd23b905-2d37-4195-81d6-2a11020f1806",
+      "name":"Viết bài báo cho hội nghị quốc tế",
+      "early_start_time":"2022-07-01 08:00:00",
+      "late_finish_time":"2022-07-09 17:00:00",
+      "estimated_time":150,
+      "flextime":1
+    },
+    {
+      "id":"31fb459c-3bf4-4fa9-a422-05c9251246b0",
+      "name":"Viết nhật ký nghiên cứu",
+      "early_start_time":"2022-07-01 08:00:00",
+      "late_finish_time":"2022-07-09 17:00:00",
+      "estimated_time":180,
+      "flextime":1
+    },
+    {
+      "id":"77b73981-54ac-4359-a52c-b8b0465f56ae",
+      "name":"Viết báo cho hội nghị khoa học",
+      "early_start_time":"2022-07-01 08:00:00",
+      "late_finish_time":"2022-07-09 17:00:00",
+      "estimated_time":120,
+      "flextime":1
+    },
+    {
+      "id":"575f45df-e1f6-46a4-8469-b80539537065",
+      "name":"Collect dataset",
+      "early_start_time":"2022-07-01 08:00:00",
+      "late_finish_time":"2022-07-09 17:00:00",
+      "estimated_time":210,
+      "flextime":1
+    },
+    {
+      "id":"a89af6d5-b76d-42f1-b84e-920342da3a42",
+      "name":"Gửi báo cáo",
+      "early_start_time":"2022-07-01 08:00:00",
+      "late_finish_time":"2022-07-09 17:00:00",
+      "estimated_time":240,
+      "flextime":1
+    },
+    {
+      "id":"657e88a9-4211-4eaa-92ff-48eb7f9775c6",
+      "name":"Viết web service",
+      "early_start_time":"2022-07-01 08:00:00",
+      "late_finish_time":"2022-07-09 17:00:00",
+      "estimated_time":150,
+      "flextime":1
+    }
+  ],
+  "breaking_time_slots":[
+    {
+      "id":"b75c51a4-5656-441e-8809-9ad85f8f0b72",
+      "start_time":"2022-07-08 17:00:00",
+      "end_time":"2022-07-09 17:00:00"
+    },
+    {
+      "id":"e5c77fcc-52ad-4906-a222-acc7c9c00d4f",
+      "start_time":"2022-07-01 12:00:00",
+      "end_time":"2022-07-01 13:00:00"
+    },
+    {
+      "id":"76a8f89e-b992-4a18-b170-453d3853f479",
+      "start_time":"2022-07-01 17:00:00",
+      "end_time":"2022-07-04 08:00:00"
+    },
+    {
+      "id":"c48a1648-1a7f-48d8-8ae1-78274112504f",
+      "start_time":"2022-07-04 12:00:00",
+      "end_time":"2022-07-04 13:00:00"
+    },
+    {
+      "id":"5dd64b88-1904-4736-a4ce-4c5070abd2b8",
+      "start_time":"2022-07-04 17:00:00",
+      "end_time":"2022-07-05 08:00:00"
+    },
+    {
+      "id":"86b152ea-9b65-4ed9-8550-185f95518ae5",
+      "start_time":"2022-07-05 12:00:00",
+      "end_time":"2022-07-05 13:00:00"
+    },
+    {
+      "id":"c2ce5f53-5db6-41d2-8331-1c026d19dcf6",
+      "start_time":"2022-07-05 17:00:00",
+      "end_time":"2022-07-06 08:00:00"
+    },
+    {
+      "id":"b1e8e2b1-1ad0-47f9-813b-def195b085f3",
+      "start_time":"2022-07-06 12:00:00",
+      "end_time":"2022-07-06 13:00:00"
+    },
+    {
+      "id":"db57cf75-3e7e-4d45-be87-664086ba09a8",
+      "start_time":"2022-07-06 17:00:00",
+      "end_time":"2022-07-07 08:00:00"
+    },
+    {
+      "id":"51997fa7-7db5-4eec-906b-79477edb49fd",
+      "start_time":"2022-07-07 12:00:00",
+      "end_time":"2022-07-07 13:00:00"
+    },
+    {
+      "id":"e7f58c4b-c712-4822-9f75-b11e6c6867c2",
+      "start_time":"2022-07-07 17:00:00",
+      "end_time":"2022-07-08 08:00:00"
+    }
+  ],
+  "scheduled_working_time_slots":[]
+}

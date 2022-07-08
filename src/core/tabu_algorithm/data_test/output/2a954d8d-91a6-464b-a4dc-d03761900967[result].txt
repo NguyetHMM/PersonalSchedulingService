@@ -1,0 +1,761 @@
+{
+  "population_size":311,
+  "accept_individual":{
+    "result":[
+      {
+        "id":"8bdc84f5-a1a8-4092-a9ae-19570caa3550",
+        "start_time":"2022-07-01 08:00:00",
+        "end_time":"2022-07-01 09:30:00",
+        "job":{
+          "id":"b5f51ec3-4e35-4f17-aa75-27c20038ab4c",
+          "name":"Thu thập thông tin lý lịch khoa học",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":90,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"0eb90af1-87dc-42d0-a0f4-5217544b6811",
+        "start_time":"2022-07-01 09:30:00",
+        "end_time":"2022-07-01 11:00:00",
+        "job":{
+          "id":"8facbbea-a497-41d8-9b6f-5913a7c989b5",
+          "name":"Tổng kết nghiên cứu",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":90,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"e410fcc5-0fd0-4909-a35c-c8a6e0e58f2a",
+        "start_time":"2022-07-01 11:00:00",
+        "end_time":"2022-07-01 12:00:00",
+        "job":{
+          "id":"5b25c258-aaf1-469d-b70a-61021835ec43",
+          "name":"Viết nhật ký nghiên cứu",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":120,
+          "flextime":1
+        },
+        "remaining_time":60
+      },
+      {
+        "id":"8220dc26-3813-4497-9322-62ee5bea3c12",
+        "start_time":"2022-07-01 13:00:00",
+        "end_time":"2022-07-01 14:00:00",
+        "job":{
+          "id":"5b25c258-aaf1-469d-b70a-61021835ec43",
+          "name":"Viết nhật ký nghiên cứu",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":120,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"55b812d0-e2ed-46a9-ad21-1a959d81cb5b",
+        "start_time":"2022-07-01 14:00:00",
+        "end_time":"2022-07-01 16:30:00",
+        "job":{
+          "id":"1ed51771-33ae-4451-84bb-6fdcd17219d1",
+          "name":"Thực hiện báo cáo",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":150,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"3d65854f-82a9-40fd-a96e-8b5a61a014f3",
+        "start_time":"2022-07-01 16:30:00",
+        "end_time":"2022-07-01 17:00:00",
+        "job":{
+          "id":"16a8afa9-1f49-49a1-9403-8ea3dc6c28e0",
+          "name":"Thực hiện báo cáo",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":180,
+          "flextime":1
+        },
+        "remaining_time":150
+      },
+      {
+        "id":"e33a3988-012d-46fb-aac0-8e0a5c411f63",
+        "start_time":"2022-07-04 08:00:00",
+        "end_time":"2022-07-04 10:30:00",
+        "job":{
+          "id":"16a8afa9-1f49-49a1-9403-8ea3dc6c28e0",
+          "name":"Thực hiện báo cáo",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":180,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"54e2c6cd-d376-4b3a-93c7-116e032b1c21",
+        "start_time":"2022-07-04 10:30:00",
+        "end_time":"2022-07-04 12:00:00",
+        "job":{
+          "id":"a85d2e40-653e-4c31-a4e5-ea8b25c07184",
+          "name":"Viết bài báo",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":120,
+          "flextime":1
+        },
+        "remaining_time":30
+      },
+      {
+        "id":"54fd4f5a-3d97-4c74-a9f9-7606d697c6e4",
+        "start_time":"2022-07-04 13:00:00",
+        "end_time":"2022-07-04 13:30:00",
+        "job":{
+          "id":"a85d2e40-653e-4c31-a4e5-ea8b25c07184",
+          "name":"Viết bài báo",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":120,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"8e9c068e-7848-42ea-8b07-152cd21b5580",
+        "start_time":"2022-07-04 13:30:00",
+        "end_time":"2022-07-04 16:30:00",
+        "job":{
+          "id":"fc1498b6-444d-455e-8d2d-cf8465211848",
+          "name":"Làm web",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":180,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"da84df73-94f9-4726-b8ed-a034756e7418",
+        "start_time":"2022-07-04 16:30:00",
+        "end_time":"2022-07-04 17:00:00",
+        "job":{
+          "id":"064cd5ea-3709-4846-910a-7e7264b1074e",
+          "name":"Liên hệ đối tác",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":180,
+          "flextime":1
+        },
+        "remaining_time":150
+      },
+      {
+        "id":"999aaa92-8540-41ca-bed5-e594693b1d42",
+        "start_time":"2022-07-05 10:00:00",
+        "end_time":"2022-07-05 12:00:00",
+        "job":{
+          "id":"064cd5ea-3709-4846-910a-7e7264b1074e",
+          "name":"Liên hệ đối tác",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":180,
+          "flextime":1
+        },
+        "remaining_time":30
+      },
+      {
+        "id":"ef9fb51b-98d6-4372-806f-340d13d879d6",
+        "start_time":"2022-07-05 13:00:00",
+        "end_time":"2022-07-05 13:30:00",
+        "job":{
+          "id":"064cd5ea-3709-4846-910a-7e7264b1074e",
+          "name":"Liên hệ đối tác",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":180,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"d16678e8-853b-4e7b-b3c1-5569f36f5d70",
+        "start_time":"2022-07-05 13:30:00",
+        "end_time":"2022-07-05 17:00:00",
+        "job":{
+          "id":"5de10794-f007-4730-b06b-f5a74069edf0",
+          "name":"Train mô hình",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":240,
+          "flextime":1
+        },
+        "remaining_time":30
+      },
+      {
+        "id":"48158b84-b126-47cb-80a3-3111882d535e",
+        "start_time":"2022-07-06 08:00:00",
+        "end_time":"2022-07-06 08:30:00",
+        "job":{
+          "id":"5de10794-f007-4730-b06b-f5a74069edf0",
+          "name":"Train mô hình",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":240,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"ed30cbd2-2b75-48a4-bce5-917ff5a9280f",
+        "start_time":"2022-07-06 08:30:00",
+        "end_time":"2022-07-06 09:30:00",
+        "job":{
+          "id":"422f73a5-dd89-4226-a062-ca6c552781a4",
+          "name":"Hoàn thiện hồ sơ cho đề tài",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":60,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"9959176c-327a-4ca3-a2fd-012d8597f9f1",
+        "start_time":"2022-07-06 09:30:00",
+        "end_time":"2022-07-06 12:00:00",
+        "job":{
+          "id":"58845843-a4d4-41af-a0b0-bd24bf29c9fd",
+          "name":"Hoàn thành hồ sơ cho đề tài",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":180,
+          "flextime":1
+        },
+        "remaining_time":30
+      },
+      {
+        "id":"bb2bf795-0171-4298-9e42-c8d918a6e391",
+        "start_time":"2022-07-06 13:00:00",
+        "end_time":"2022-07-06 13:30:00",
+        "job":{
+          "id":"58845843-a4d4-41af-a0b0-bd24bf29c9fd",
+          "name":"Hoàn thành hồ sơ cho đề tài",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":180,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"82d28a7d-5bc0-4cc0-8d76-d5a413ea5271",
+        "start_time":"2022-07-06 13:30:00",
+        "end_time":"2022-07-06 16:30:00",
+        "job":{
+          "id":"d10958e2-d3e7-45ff-ab83-1f3d60acd532",
+          "name":"Hoàn thiện hồ sơ cho đề tài",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":180,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"ec31fec3-67b3-48f5-a606-d884bc2ff21f",
+        "start_time":"2022-07-06 16:30:00",
+        "end_time":"2022-07-06 17:00:00",
+        "job":{
+          "id":"738fa784-b518-43d5-8ab0-0c92b110ad70",
+          "name":"Gặp mặt người hợp tác",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":90,
+          "flextime":1
+        },
+        "remaining_time":60
+      },
+      {
+        "id":"c8af4576-f138-498e-93f4-766f81b0e8cd",
+        "start_time":"2022-07-07 08:00:00",
+        "end_time":"2022-07-07 09:00:00",
+        "job":{
+          "id":"738fa784-b518-43d5-8ab0-0c92b110ad70",
+          "name":"Gặp mặt người hợp tác",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":90,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"78c7cb99-149c-4378-8f98-65725417fd47",
+        "start_time":"2022-07-07 09:00:00",
+        "end_time":"2022-07-07 12:00:00",
+        "job":{
+          "id":"f1cb19a0-5706-4219-9cbd-3ee7fe7bff77",
+          "name":"Cung cấp thông tin lý lịch khoa học",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":240,
+          "flextime":1
+        },
+        "remaining_time":60
+      },
+      {
+        "id":"f6eaf5b3-d614-403f-8794-c0499aad6415",
+        "start_time":"2022-07-07 13:00:00",
+        "end_time":"2022-07-07 14:00:00",
+        "job":{
+          "id":"f1cb19a0-5706-4219-9cbd-3ee7fe7bff77",
+          "name":"Cung cấp thông tin lý lịch khoa học",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":240,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"b21c5d8b-8666-4da4-95c8-f24a4b4c2740",
+        "start_time":"2022-07-07 14:00:00",
+        "end_time":"2022-07-07 16:00:00",
+        "job":{
+          "id":"6331797b-c257-4db6-b964-ea4652229799",
+          "name":"Hoàn thiện LLKH",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":120,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"3f1fa35c-2b15-49ca-bb6a-b37eff027d0d",
+        "start_time":"2022-07-07 16:00:00",
+        "end_time":"2022-07-07 17:00:00",
+        "job":{
+          "id":"371475bd-396d-4045-a52c-4059e0c9509c",
+          "name":"Tổng hợp báo cáo",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":60,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"55f45feb-bb13-47fc-a1e6-d5c7b1b076d3",
+        "start_time":"2022-07-08 08:00:00",
+        "end_time":"2022-07-08 12:00:00",
+        "job":{
+          "id":"1ef47af6-4653-4d09-b3f1-09e811eb1c1b",
+          "name":"Viết script cho website",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":240,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"3367e2f2-709a-4c11-8ab5-1ddd2aaf814c",
+        "start_time":"2022-07-08 13:00:00",
+        "end_time":"2022-07-08 17:00:00",
+        "job":{
+          "id":"198c40ee-47d2-4653-9bc5-4cdba68b9463",
+          "name":"Viết bài",
+          "early_start_time":"2022-07-02 08:00:00",
+          "late_finish_time":"2022-07-10 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":240,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"29372472-b778-42c0-a0c2-6e8a169cf6c7",
+        "start_time":"2022-07-11 10:00:00",
+        "end_time":"2022-07-11 12:00:00",
+        "job":{
+          "id":"a3214eaa-e875-4d7b-b277-691a6199e4df",
+          "name":"Viết dịch vụ web",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":150,
+          "flextime":1
+        },
+        "remaining_time":30
+      },
+      {
+        "id":"84c04167-bba9-4083-9e0d-abdac7f21e6e",
+        "start_time":"2022-07-11 13:00:00",
+        "end_time":"2022-07-11 13:30:00",
+        "job":{
+          "id":"a3214eaa-e875-4d7b-b277-691a6199e4df",
+          "name":"Viết dịch vụ web",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":150,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"d6e8d2d6-87e0-4489-b4d1-70bafe2e52e4",
+        "start_time":"2022-07-11 13:30:00",
+        "end_time":"2022-07-11 16:30:00",
+        "job":{
+          "id":"cddd38ba-7dec-407f-9f17-5fd47640b47d",
+          "name":"Liên hệ đối tác",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":180,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"d9cc7828-cc20-4604-a39d-21152ddca799",
+        "start_time":"2022-07-11 16:30:00",
+        "end_time":"2022-07-11 17:00:00",
+        "job":{
+          "id":"daa5f520-67f8-42a9-88e6-e6a07266536f",
+          "name":"Hoàn thiện hồ sơ cho đề tài",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":90,
+          "flextime":1
+        },
+        "remaining_time":60
+      },
+      {
+        "id":"4faf2e09-0bf1-45d0-8d9d-3ca6daeed151",
+        "start_time":"2022-07-12 10:00:00",
+        "end_time":"2022-07-12 11:00:00",
+        "job":{
+          "id":"daa5f520-67f8-42a9-88e6-e6a07266536f",
+          "name":"Hoàn thiện hồ sơ cho đề tài",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":90,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"05998161-121b-43a2-aac2-30a50a7a005a",
+        "start_time":"2022-07-12 11:00:00",
+        "end_time":"2022-07-12 12:00:00",
+        "job":{
+          "id":"f3b4f8ab-2b2c-4723-b36f-d1830a5648fc",
+          "name":"Liên hệ đối tác",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":90,
+          "flextime":1
+        },
+        "remaining_time":30
+      },
+      {
+        "id":"1f98febb-3d13-4ae1-a134-38f6dc1b1322",
+        "start_time":"2022-07-12 13:00:00",
+        "end_time":"2022-07-12 13:30:00",
+        "job":{
+          "id":"f3b4f8ab-2b2c-4723-b36f-d1830a5648fc",
+          "name":"Liên hệ đối tác",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":90,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"dfe81c6c-dcc2-4e7b-8808-8bceaf405b83",
+        "start_time":"2022-07-12 13:30:00",
+        "end_time":"2022-07-12 15:30:00",
+        "job":{
+          "id":"b9e1ef07-67f9-4b2e-a0e8-e726aa5603c6",
+          "name":"Họp báo cáo công việc",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":120,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"66703939-4369-4d0d-bba9-b25575885872",
+        "start_time":"2022-07-12 15:30:00",
+        "end_time":"2022-07-12 17:00:00",
+        "job":{
+          "id":"cac85db2-2b0b-45a7-a321-74e94314b0aa",
+          "name":"Hoàn thành bài báo",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":240,
+          "flextime":1
+        },
+        "remaining_time":150
+      },
+      {
+        "id":"30963a5d-7b4d-4e7c-9fc2-8bd396cba17d",
+        "start_time":"2022-07-13 08:00:00",
+        "end_time":"2022-07-13 10:30:00",
+        "job":{
+          "id":"cac85db2-2b0b-45a7-a321-74e94314b0aa",
+          "name":"Hoàn thành bài báo",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":240,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"875abc23-2b84-4d59-a290-02a930216e35",
+        "start_time":"2022-07-13 10:30:00",
+        "end_time":"2022-07-13 12:00:00",
+        "job":{
+          "id":"4be3288a-2744-4a24-a831-1ef5844bda41",
+          "name":"Chuẩn bị bài báo",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":90,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"19d0b402-7ebb-4000-9fb5-47165d650009",
+        "start_time":"2022-07-13 13:00:00",
+        "end_time":"2022-07-13 16:00:00",
+        "job":{
+          "id":"66275f9e-f771-4dd4-bb58-8dd55a1fef12",
+          "name":"Nhật ký thí nghiệm",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":180,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"89c20dab-27d4-42de-87a2-baf92354702a",
+        "start_time":"2022-07-13 16:00:00",
+        "end_time":"2022-07-13 17:00:00",
+        "job":{
+          "id":"2bac21e1-271f-46c7-9d0f-f04650487a49",
+          "name":"Ghi chép sổ tay thí nghiệm",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":60,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"1ead1fcf-7800-41a4-b717-fd451893a56b",
+        "start_time":"2022-07-14 08:00:00",
+        "end_time":"2022-07-14 11:00:00",
+        "job":{
+          "id":"1ab5b730-e66c-40cd-8b6e-4b3787628fed",
+          "name":"Nộp bài tham dự hội nghị",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":180,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"12d60361-54c8-43b1-aee0-62b0f9e0377e",
+        "start_time":"2022-07-14 11:00:00",
+        "end_time":"2022-07-14 12:00:00",
+        "job":{
+          "id":"3621ab31-486a-4235-9915-a452e525ccae",
+          "name":"Liên lạc với đối tác",
+          "early_start_time":"2022-07-11 08:00:00",
+          "late_finish_time":"2022-07-14 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":240,
+          "flextime":1
+        },
+        "remaining_time":180
+      },
+      {
+        "id":"48e0609c-dce2-44b7-b374-7d54e26834fd",
+        "start_time":"2022-07-14 13:00:00",
+        "end_time":"2022-07-14 16:00:00",
+        "job":{
+          "id":"3621ab31-486a-4235-9915-a452e525ccae",
+          "name":"Liên lạc với đối tác",
+          "early_start_time":"2022-07-11 08:00:00",
+          "late_finish_time":"2022-07-14 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":240,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"6715821c-ccf0-4a5e-9e12-2eb50a32ff94",
+        "start_time":"2022-07-14 16:00:00",
+        "end_time":"2022-07-14 17:00:00",
+        "job":{
+          "id":"3e655d59-0752-42a1-8e8a-a8061e0a7829",
+          "name":"Họp với bên đối tác",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":60,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"e599efb3-6e77-4ef4-a85e-bbba6fdf4b6e",
+        "start_time":"2022-07-15 08:00:00",
+        "end_time":"2022-07-15 10:30:00",
+        "job":{
+          "id":"8cefb9fa-61c7-4a09-a92c-50b0d80e8250",
+          "name":"Kiểm tra mô hình",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":150,
+          "flextime":1
+        },
+        "remaining_time":0
+      },
+      {
+        "id":"9088cf5e-0267-4158-8ce0-6c2b5f3000b2",
+        "start_time":"2022-07-15 10:30:00",
+        "end_time":"2022-07-15 12:00:00",
+        "job":{
+          "id":"9c4aaebb-27c0-413e-ac13-e19dd999e0cc",
+          "name":"Hoàn thiện website",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":150,
+          "flextime":1
+        },
+        "remaining_time":60
+      },
+      {
+        "id":"8aa2fee4-f226-4652-8d75-54c8d7ebbdce",
+        "start_time":"2022-07-15 13:00:00",
+        "end_time":"2022-07-15 14:00:00",
+        "job":{
+          "id":"9c4aaebb-27c0-413e-ac13-e19dd999e0cc",
+          "name":"Hoàn thiện website",
+          "early_start_time":"2022-07-01 08:00:00",
+          "late_finish_time":"2022-07-21 17:00:00",
+          "start_time":null,
+          "finish_time":null,
+          "estimated_time":150,
+          "flextime":1
+        },
+        "remaining_time":0
+      }
+    ]
+  },
+  "runtime":12.158530950546265,
+  "jobs_num":36
+}
