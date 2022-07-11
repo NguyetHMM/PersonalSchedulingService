@@ -1,4 +1,5 @@
 import copy
+import json
 import time
 from typing import List
 
@@ -58,14 +59,21 @@ class SchedulingGenerateService:
             recent_working_time_slots.append(t)
 
         genetic = Genetic()
-        res = genetic.schedule_generation(schedule_start_time=start_time,
-                                          schedule_end_time=end_time,
-                                          jobs=schedule_jobs,
-                                          scheduled_working_time_slots=recent_working_time_slots,
-                                          breaking_time_slots=temp)
+        res, population_size, output_filename = genetic.schedule_generation(schedule_start_time=start_time,
+                                                                            schedule_end_time=end_time,
+                                                                            jobs=schedule_jobs,
+                                                                            scheduled_working_time_slots=recent_working_time_slots,
+                                                                            breaking_time_slots=temp)
         run_time_end = time.time()
 
+        log = {
+            'population_size': population_size,
+            'accept_individual': res,
+            'runtime': run_time_end - run_time_start,
+            'jobs_num': len(jobs)
+        }
+        temp_output_filename = output_filename + '[result].txt'
+        with open(f'src/core/genetic_algorithm/data_test/output/{temp_output_filename}', 'w') as file:
+            json.dump(log, file, indent=2, separators=(',', ':'), ensure_ascii=False)
 
         return res
-
-

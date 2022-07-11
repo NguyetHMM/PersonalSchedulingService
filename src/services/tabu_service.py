@@ -72,7 +72,7 @@ class TabuService:
             'runtime': run_time_end - run_time_start,
             'jobs_num': len(jobs)
         }
-        output_filename = 'result' + output_filename
-        with open(f'{output_filename}', 'w') as file:
+        temp_output_filename = output_filename + '[result].txt'
+        with open(f'src/core/tabu_algorithm/data_test/output/{temp_output_filename}', 'w') as file:
             json.dump(log, file, indent=2, separators=(',', ':'), ensure_ascii=False)
         return res

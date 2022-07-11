@@ -4,3 +4,4 @@
 **/__pycache__
 .docker/data
 .idea
+src/core/tabu_algorithm/data_test/output/*

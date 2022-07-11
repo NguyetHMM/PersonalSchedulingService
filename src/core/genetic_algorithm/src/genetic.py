@@ -1,4 +1,5 @@
 import copy
+import json
 import math
 import random
 from datetime import datetime, timedelta
@@ -428,9 +429,16 @@ class Genetic:
                         done = True
                 population.append(new_generation)
                 generation += 1
-        # total_len = 0
-        # for p in population:
-        #     total_len += len(p)
+        total_len = 0
+        total_individual =[]
+        for p in population:
+            total_len += len(p)
+            for indi in p:
+                total_individual.append({
+                    'working_time_slots': [item.serialize() for item in indi.schedule.time_slots],
+                    'lateness': indi.lateness
+                })
+
         # else:
         #     res = jsonify({
         #         'message': validated['message']
@@ -438,9 +446,13 @@ class Genetic:
         #     # res.status_code = 422
 
         if acceptable_individual:
+            output_filename = generate_uuid()
+            temp_output_filename = output_filename + '[population].txt'
+            with open(f'src/core/genetic_algorithm/data_test/output/{temp_output_filename}', 'w') as file:
+                json.dump(total_individual, file, indent=2, separators=(',', ':'), ensure_ascii=False)
             acceptable_individual.schedule.time_slots.sort(key=lambda x: x.start_time)
             res = {
                 'result': acceptable_individual.schedule.serialize()['time_slots']
             }
 
-        return res
+        return res, total_len, output_filename
