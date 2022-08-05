@@ -68,9 +68,10 @@ class TabuService:
         run_time_end = time.time()
         log = {
             'population_size': population_size,
-            'accept_individual': res,
             'runtime': run_time_end - run_time_start,
-            'jobs_num': len(jobs)
+            'jobs_num': len(jobs),
+            'accept_individual': res,
+
         }
         temp_output_filename = output_filename + '[result].txt'
         with open(f'src/core/tabu_algorithm/data_test/output/{temp_output_filename}', 'w') as file:

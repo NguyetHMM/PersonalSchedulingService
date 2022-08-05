@@ -4,4 +4,8 @@
 **/__pycache__
 .docker/data
 .idea
-src/core/tabu_algorithm/data_test/output/*
+src/core/tabu_algorithm/data_test/
+
+.VSCodeCounter/
+src/core/data/
+src/core/genetic_algorithm/data_test/
