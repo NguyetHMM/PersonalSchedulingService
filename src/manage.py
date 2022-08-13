@@ -19,7 +19,7 @@ def create_app(flask_env=FLASK_ENV):
         _type_: _description_
     """
     app = Flask(__name__)
-    # CORS(app, resources={r"*":{"origins":"*"}}) 
+    CORS(app, resources={r"*":{"origins":"*"}})
 
     # Config app
     app.config.from_object(config_dict[flask_env])

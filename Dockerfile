@@ -5,7 +5,7 @@ RUN apt-get update \
 
 WORKDIR /app
 
-COPY . /app
+COPY ./requirements.txt /app/requirements.txt
 
 RUN pip install --upgrade pip
 
